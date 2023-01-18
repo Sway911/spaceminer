@@ -19,7 +19,7 @@ class Ship():
         self.rotImage = image
         self.thruster = 0
         self.accelatare_capacity=2
-        self.adjustmentSpeed = 30
+        self.adjustmentSpeed = 30   # sets base multiplyer during delta time
 
     def draw(self,surf):
         # surf.blit
@@ -43,16 +43,14 @@ class Ship():
     def propultion_thruster(self):
         pass
 
+    #gets new position and adjusts by delta time and then further adjust to get constant speed percentage of thruster speed
     def propell_ship(self,dt):
         newPosition = (math.sin(math.radians(self.direction)),math.cos(math.radians(self.direction)))
         if self.thruster != 0:
-            self.positionx += newPosition[0]*dt*self.adjustmentSpeed
-            self.positiony += newPosition[1]*dt*self.adjustmentSpeed
+            self.positionx += newPosition[0]*dt*(self.adjustmentSpeed*self.thruster/100)
+            self.positiony += newPosition[1]*dt*(self.adjustmentSpeed*self.thruster/100)
             # self.hitbox.x += round(newPosition[0]*dt,0)
             # self.hitbox.y += round(newPosition[1]*dt,0)
             self.hitbox.x = round(self.positionx,0)
             self.hitbox.y = round(self.positiony,0)
-        print(f"just pos {newPosition[0]},{newPosition[1]}")
-        print(f"with dt {newPosition[0]*dt},{newPosition[1]*dt}")
-        print(f"with dt with round {round(newPosition[0]*dt)},{round(newPosition[1]*dt)}")
-        # print(self.hitbox.x,self.hitbox.y)
+            
