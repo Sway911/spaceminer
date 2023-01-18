@@ -53,11 +53,13 @@ while True:
 
     keypressed = pygame.key.get_pressed()    
     if keypressed[K_w]:
-        if myShip.thruster<100:
-            myShip.thruster+=1
+        myShip.propultion_forward_thruster(dt)
+        # if myShip.thruster<100:
+        #     myShip.thruster+=1
     if keypressed[K_s]:
-        if myShip.thruster>0:
-            myShip.thruster-=1
+        myShip.propultion_backward_thruster(dt)
+        # if myShip.thruster>0:
+        #     myShip.thruster-=1
     if keypressed[K_d]:
         myShip.rotate(dt,-1)
     if keypressed[K_a]:        

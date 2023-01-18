@@ -19,8 +19,9 @@ class Ship():
         self.rotImage = image
         self.thruster = 0
         self.accelatare_capacity=2
+        #delta time adjustmets for varios actions
         self.adjustmentSpeed = 30   # sets base multiplyer during delta time
-
+        self.thrusterBaseSpeed=2    
     def draw(self,surf):
         # surf.blit
         # surf.blit(self.rotImage,(20,30))
@@ -40,9 +41,14 @@ class Ship():
         self.rotImage = pygame.transform.rotate(self.image,self.direction)
         print(self.direction)
 
-    def propultion_thruster(self):
-        pass
-
+    def propultion_forward_thruster(self,dt):
+        if self.thruster<100:
+            self.thruster += 1
+        
+    def propultion_backward_thruster(self,dt):
+        if self.thruster>0:
+            self.thruster-=1
+            
     #gets new position and adjusts by delta time and then further adjust to get constant speed percentage of thruster speed
     def propell_ship(self,dt):
         newPosition = (math.sin(math.radians(self.direction)),math.cos(math.radians(self.direction)))
