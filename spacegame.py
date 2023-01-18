@@ -59,9 +59,9 @@ while True:
         if myShip.thruster>0:
             myShip.thruster-=1
     if keypressed[K_d]:
-        myShip.rotate(dt,1)
+        myShip.rotate(dt,-1)
     if keypressed[K_a]:        
-        myShip.rotate(dt,-1)   
+        myShip.rotate(dt,1)   
     
     screen.fill(BLACK)
     
@@ -73,7 +73,7 @@ while True:
     # screen.blit(myShip.rotImage,myShip.position)
     myShip.draw(screen)
 
-    myShip.propell_ship()
+    myShip.propell_ship(dt)
     
     # Draws the hud frame
     bottomHud.drawHudFrame(screen)

@@ -4,7 +4,9 @@ from gameSettings import *
 
 class Ship():
     def __init__(self,image):
-        self.position = (200,500)
+        
+        self.positionx = float(WIDTH/2)
+        self.positiony = float(HEIGHT/2)
         self.direction = 0
         self.current_speed = 0
         self.max_speed = 100
@@ -17,6 +19,7 @@ class Ship():
         self.rotImage = image
         self.thruster = 0
         self.accelatare_capacity=2
+        self.adjustmentSpeed = 30
 
     def draw(self,surf):
         # surf.blit
@@ -40,9 +43,16 @@ class Ship():
     def propultion_thruster(self):
         pass
 
-    def propell_ship(self):
-        newPosition = (round(math.sin(math.radians(self.direction)),0),round(math.cos(math.radians(self.direction)),0))
+    def propell_ship(self,dt):
+        newPosition = (math.sin(math.radians(self.direction)),math.cos(math.radians(self.direction)))
         if self.thruster != 0:
-            self.hitbox.x += newPosition[0]
-            self.hitbox.y += newPosition[1]
-        print(newPosition)
+            self.positionx += newPosition[0]*dt*self.adjustmentSpeed
+            self.positiony += newPosition[1]*dt*self.adjustmentSpeed
+            # self.hitbox.x += round(newPosition[0]*dt,0)
+            # self.hitbox.y += round(newPosition[1]*dt,0)
+            self.hitbox.x = round(self.positionx,0)
+            self.hitbox.y = round(self.positiony,0)
+        print(f"just pos {newPosition[0]},{newPosition[1]}")
+        print(f"with dt {newPosition[0]*dt},{newPosition[1]*dt}")
+        print(f"with dt with round {round(newPosition[0]*dt)},{round(newPosition[1]*dt)}")
+        # print(self.hitbox.x,self.hitbox.y)
