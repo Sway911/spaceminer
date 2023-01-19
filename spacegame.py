@@ -3,6 +3,7 @@ from pygame.locals import *
 import sys
 from gameSettings import *
 import Ship as ship
+import Asteroid as assteriod
 import Hud as hud
 import time
 
@@ -31,9 +32,13 @@ fontHeight=18
 
 myShip = ship.Ship(spaceship_image)
 bottomHud = hud.Hud(pygame.rect.Rect(0,HEIGHT-100,WIDTH,100))
-
-#test
-
+asteriodField1 = []
+asteriod1 = assteriod.Asteroid(asteriod_image,(260,100),2,1)
+asteriodField1.append(asteriod1)
+asteriod2 = assteriod.Asteroid(asteriod_image,(190,200),3,4)
+asteriodField1.append(asteriod2)
+asteriod3 = assteriod.Asteroid(asteriod_image,(100,40),5,10)
+asteriodField1.append(asteriod3)
 
 previosTime = time.time()
 
@@ -77,10 +82,14 @@ while True:
     screen.fill(BLACK)
     
     # screen.blit(spaceship_image,(20,30))
-    screen.blit(asteriod_image,(260,100))
-    screen.blit(asteriod_image,(190,200))
-    screen.blit(asteriod_image,(100,40))
+    # screen.blit(asteriod_image,(260,100))
+    # screen.blit(asteriod_image,(190,200))
+    # screen.blit(asteriod_image,(100,40))
+    asteriod1.draw(screen)
+    asteriod2.draw(screen)
+    asteriod3.draw(screen)
     
+
     # screen.blit(myShip.rotImage,myShip.position)
     myShip.draw(screen)
 

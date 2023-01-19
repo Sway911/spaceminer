@@ -22,7 +22,7 @@ class Ship():
         self.adjustmentSpeed = 30   # sets base multiplyer during delta time
         self.thrusterBaseSpeed=2    
 
-    def draw(self,surf):
+    def draw(self,surf:pygame.display):
         # surf.blit
         # surf.blit(self.rotImage,(20,30))
         surf.blit(self.rotImage,(self.hitbox.centerx,self.hitbox.centery))
