@@ -14,6 +14,7 @@ class Asteroid():
     def draw(self,surf):
         tempImg = pygame.transform.scale(self.image,(self.asHitbox.width,self.asHitbox.height))
         surf.blit(tempImg,(self.asHitbox.centerx,self.asHitbox.centery))
+        pygame.draw.rect(surf,WHITE,self.asHitbox,1,1)
 
     def rotate(self):
         pass
