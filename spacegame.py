@@ -11,9 +11,12 @@ pygame.init();
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
 
 
-# 1) basic movement
-# 2) rotate movement
-# 3) radar System
+# 1) basic movement, thrusters basic done, rotate basic done, slide still outstanding
+# 2) rotate movement, need to recenter image
+# 3) select and scan asteriod
+# 3) implement momentum for ship
+# implement mine and split of asteriod
+# 3) radar System first do ping and hit of asteriods
 # 4) asteriod grabber
 # 5) basic hud( position, fuel, cargo capacity)
 # 6) basic spaceport
@@ -51,7 +54,9 @@ while True:
             if keypressed[K_SPACE]:
                 myShip.thruster=0
 
-    keypressed = pygame.key.get_pressed()    
+    mousePos = pygame.mouse.get_pos()
+    keypressed = pygame.key.get_pressed()
+
     if keypressed[K_w]:
         myShip.propultion_forward_thruster(dt)
         # if myShip.thruster<100:
@@ -63,7 +68,11 @@ while True:
     if keypressed[K_d]:
         myShip.rotate(dt,-1)
     if keypressed[K_a]:        
-        myShip.rotate(dt,1)   
+        myShip.rotate(dt,1)
+    if keypressed[K_q]:
+        myShip.shipSlip(dt,-1)
+    if keypressed[K_e]:
+        myShip.shipSlip(dt,1)
     
     screen.fill(BLACK)
     
@@ -91,6 +100,8 @@ while True:
     # Populates the text on hud frame on Centre
     hudText10 = menuFont.render(f'ThurstPower: {myShip.thruster}',False,WHITE)
     screen.blit(hudText10,(WIDTH/2-30,bottomHud.frame.top))
+    hudText11 = menuFont.render(f'MousePosition: {mousePos}',False,WHITE)
+    screen.blit(hudText11,(WIDTH/2-30,bottomHud.frame.top+fontHeight))
     # Populates the text on hud frame on Right
     hudText5 = menuFont.render(f'Speed: {myShip.current_speed}',False,WHITE)
     screen.blit(hudText5,(WIDTH-180,bottomHud.frame.top))
