@@ -30,14 +30,16 @@ defaultgamefont = pygame.font.SysFont("Arial", 18)
 menuFont = pygame.font.SysFont("Arial", 18)
 fontHeight=18
 
+print(asteriod_image.get_rect().width)
+
 myShip = ship.Ship(spaceship_image)
 bottomHud = hud.Hud(pygame.rect.Rect(0,HEIGHT-100,WIDTH,100))
 asteriodField1 = []
 asteriod1 = assteriod.Asteroid(asteriod_image,(260,100),2,1)
 asteriodField1.append(asteriod1)
-asteriod2 = assteriod.Asteroid(asteriod_image,(190,200),3,4)
+asteriod2 = assteriod.Asteroid(asteriod_image,(190,200),3,2)
 asteriodField1.append(asteriod2)
-asteriod3 = assteriod.Asteroid(asteriod_image,(100,40),5,10)
+asteriod3 = assteriod.Asteroid(asteriod_image,(100,40),5,6)
 asteriodField1.append(asteriod3)
 
 previosTime = time.time()
