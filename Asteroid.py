@@ -21,3 +21,5 @@ class Asteroid():
     def returnComp(self):
         return self.materailComp    
     
+    def checkMouseClickCollition(self,mousePos):
+        return self.asHitbox.collidepoint(mousePos)

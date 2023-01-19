@@ -60,10 +60,18 @@ while True:
                 pass
             if keypressed[K_SPACE]:
                 myShip.thruster=0
+        if event.type == MOUSEBUTTONDOWN:
+            mousepressed = pygame.mouse.get_pressed()
+            if mousepressed == (True,False,False):
+                if asteriod3.checkMouseClickCollition(mousePos): 
+                    print("iclicked on assss")
+                else:
+                    print("i clicked in space")
 
     mousePos = pygame.mouse.get_pos()
+    mousepressed = pygame.mouse.get_pressed()
     keypressed = pygame.key.get_pressed()
-
+    
     if keypressed[K_w]:
         myShip.propultion_forward_thruster(dt)
         # if myShip.thruster<100:
@@ -81,16 +89,17 @@ while True:
     if keypressed[K_e]:
         myShip.shipSlip(dt,1)
     
+    # if mousepressed[BUTTON_LEFT]:
+    #     print("i got clicked")
+
     screen.fill(BLACK)
     
-    # screen.blit(spaceship_image,(20,30))
-    # screen.blit(asteriod_image,(260,100))
-    # screen.blit(asteriod_image,(190,200))
-    # screen.blit(asteriod_image,(100,40))
-    asteriod1.draw(screen)
-    asteriod2.draw(screen)
-    asteriod3.draw(screen)
-    
+    # asteriod1.draw(screen)
+    # asteriod2.draw(screen)
+    # asteriod3.draw(screen)
+    for ast in asteriodField1:
+        ast.draw(screen)
+        
 
     # screen.blit(myShip.rotImage,myShip.position)
     myShip.draw(screen)
