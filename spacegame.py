@@ -11,7 +11,10 @@ pygame.init();
 
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
 
+newVector1 = pygame.Vector2([1.0,2.0])
+newVector2 = pygame.Vector2([3.0,2.0])
 
+print(newVector1.distance_to(newVector2))
 # 1) basic movement, thrusters basic done, rotate basic done, slide still outstanding
 # 2) rotate movement, need to recenter image
 # 3) select and scan asteriod
@@ -68,7 +71,7 @@ while True:
                 else:
                     print("i clicked in space")
 
-    mousePos = pygame.mouse.get_pos()
+    mousePos = pygame.mouse.get_pos()    
     mousepressed = pygame.mouse.get_pressed()
     keypressed = pygame.key.get_pressed()
     

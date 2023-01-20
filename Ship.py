@@ -5,7 +5,7 @@ from gameSettings import *
 class Ship():
     def __init__(self,image):
         self.positionx = float(WIDTH/2)
-        self.positiony = float(HEIGHT/2)
+        self.positiony = float(HEIGHT/2)        
         self.direction = 0
         self.current_speed = 0
         self.max_speed = 100
