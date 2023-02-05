@@ -3,10 +3,9 @@ import math
 from gameSettings import *
 
 class Ship():
-    def __init__(self,image):
-        self.positionx = float(WIDTH/2)
-        self.positiony = float(HEIGHT/2)        
+    def __init__(self,image):     
         self.direction = 0
+        self.position = pygame.Vector2((float(WIDTH/2),float(HEIGHT/2)))
         self.current_speed = 0
         self.max_speed = 100
         self.fluel_level=100
@@ -23,8 +22,6 @@ class Ship():
         self.thrusterBaseSpeed=2    
 
     def draw(self,surf:pygame.display):
-        # surf.blit
-        # surf.blit(self.rotImage,(20,30))
         surf.blit(self.rotImage,(self.hitbox.centerx,self.hitbox.centery))
 
     def rotate(self,dt,nudge):
@@ -59,10 +56,8 @@ class Ship():
     def propell_ship(self,dt):
         newPosition = (math.sin(math.radians(self.direction)),math.cos(math.radians(self.direction)))
         if self.thruster != 0:
-            self.positionx += newPosition[0]*dt*(self.adjustmentSpeed*self.thruster/100)
-            self.positiony += newPosition[1]*dt*(self.adjustmentSpeed*self.thruster/100)
-            # self.hitbox.x += round(newPosition[0]*dt,0)
-            # self.hitbox.y += round(newPosition[1]*dt,0)
-            self.hitbox.x = round(self.positionx,0)
-            self.hitbox.y = round(self.positiony,0)
+            self.position.x += newPosition[0]*dt*(self.adjustmentSpeed*self.thruster/100)
+            self.position.y += newPosition[1]*dt*(self.adjustmentSpeed*self.thruster/100)
+            self.hitbox.x = round(self.position.x,0)
+            self.hitbox.y = round(self.position.y,0)
             
