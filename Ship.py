@@ -20,6 +20,7 @@ class Ship():
         #delta time adjustmets for varios actions
         self.adjustmentSpeed = 30   # sets base multiplyer during delta time
         self.thrusterBaseSpeed=2    
+        self.momentum = 0 
 
     def draw(self,surf:pygame.display):
         surf.blit(self.rotImage,(self.hitbox.centerx,self.hitbox.centery))
@@ -51,6 +52,17 @@ class Ship():
         #increment position value
         #reassign rounded rectangle position value
         pass
+
+    def ship_momentum(self,dt):        
+        if self.thruster > 0 and self.momentum <= 400:
+            self.momentum += 1
+        elif self.momentum > 0:
+            self.momentum -= 1
+        # value keeps decreasing at certain rate untill zero
+        # value matches movement speed
+        # if thrust is applied it increases up to a max value
+
+
 
     #gets new position and adjusts by delta time and then further adjust to get constant speed percentage of thruster speed
     def propell_ship(self,dt):

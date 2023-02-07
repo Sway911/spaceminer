@@ -107,6 +107,7 @@ while True:
     # screen.blit(myShip.rotImage,myShip.position)
     myShip.draw(screen)
 
+    myShip.ship_momentum(dt)
     myShip.propell_ship(dt)
     
     # Draws the hud frame
@@ -125,6 +126,8 @@ while True:
     screen.blit(hudText10,(WIDTH/2-30,bottomHud.frame.top))
     hudText11 = menuFont.render(f'MousePosition: {mousePos}',False,WHITE)
     screen.blit(hudText11,(WIDTH/2-30,bottomHud.frame.top+fontHeight))
+    hudText12 = menuFont.render(f'Momentum: {myShip.momentum}',False,WHITE)
+    screen.blit(hudText12,(WIDTH/2-30,bottomHud.frame.top+fontHeight*2))
     # Populates the text on hud frame on Right
     hudText5 = menuFont.render(f'Speed: {myShip.current_speed}',False,WHITE)
     screen.blit(hudText5,(WIDTH-180,bottomHud.frame.top))
